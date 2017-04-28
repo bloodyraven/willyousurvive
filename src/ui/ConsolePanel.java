@@ -13,13 +13,15 @@ import bean.CommandResponse;
 
 public class ConsolePanel extends JPanel {
 
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	private String consoleContent="";
 	private TextArea ta;
 	private TextField tf;
+	private JPanel papa;
 	
-	public ConsolePanel() {
+	public ConsolePanel(JPanel papa) {
+		this.setPapa(papa);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		final TextArea ta = new TextArea();
 		ta.setFocusable(false);
@@ -36,7 +38,7 @@ private static final long serialVersionUID = 1L;
 					ta.append("> "+tf.getText()+"\n");
 					CommandResponse response = Commandes.sendCommand(tf.getText());
 					if(response!=null)
-						ta.append("> "+response.getResponse()+"\n");
+						ta.append(response.getResponse()+"\n");
 					tf.setText("");
 				}
 			}
@@ -68,5 +70,13 @@ private static final long serialVersionUID = 1L;
 
 	public void setTf(TextField tf) {
 		this.tf = tf;
+	}
+
+	public JPanel getPapa() {
+		return papa;
+	}
+
+	public void setPapa(JPanel papa) {
+		this.papa = papa;
 	}
 }
