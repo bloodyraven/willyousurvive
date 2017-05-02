@@ -1,7 +1,12 @@
 package ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import models.LifeModel;
 
 public class MenuPanel extends JPanel {
 
@@ -10,6 +15,7 @@ public class MenuPanel extends JPanel {
 	private JButton inventoryButton = new JButton("Inventaire"), mapButton = new JButton("Carte"), saveButton = new JButton("Sauver");
 	private LifePanel lp;
 	private HungryPanel hp;
+	private LifeModel lm;
 	
 	public MenuPanel(JPanel papa) {
 		this.setPapa(papa);
@@ -19,6 +25,14 @@ public class MenuPanel extends JPanel {
 		this.add(hp);
 		this.add(inventoryButton);
 		this.add(mapButton);
+		lm=new LifeModel();
+		lm.addObserver(lp);
+		inventoryButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				lm.setVie(lm.getVie()-1);
+			}
+		});
 	}
 
 	public JPanel getPapa() {

@@ -18,7 +18,7 @@ public class GamePanel extends JPanel{
 	public GamePanel(JFrame f, Player player) {
 		this.setF(f);
 		menuPanel = new MenuPanel(this);
-		consolePanel = new ConsolePanel(this);
+		consolePanel = new ConsolePanel(this, player);
 		this.setLayout(new BorderLayout());
 		this.add(menuPanel, BorderLayout.NORTH);
 		this.add(consolePanel, BorderLayout.CENTER);
