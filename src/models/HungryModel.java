@@ -16,5 +16,7 @@ public class HungryModel extends Observable {
 
 	public void setHungry(int hungry) {
 		this.hungry = hungry;
+		setChanged();
+		notifyObservers();
 	}
 }

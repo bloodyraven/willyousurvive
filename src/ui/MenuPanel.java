@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import models.HungryModel;
 import models.LifeModel;
 
 public class MenuPanel extends JPanel {
@@ -16,6 +17,7 @@ public class MenuPanel extends JPanel {
 	private LifePanel lp;
 	private HungryPanel hp;
 	private LifeModel lm;
+	private HungryModel hm;
 	
 	public MenuPanel(JPanel papa) {
 		this.setPapa(papa);
@@ -31,6 +33,14 @@ public class MenuPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				lm.setVie(lm.getVie()-1);
+			}
+		});
+		hm =new HungryModel();
+		hm.addObserver(hp);
+		mapButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				hm.setHungry(hm.getHungry()-10);
 			}
 		});
 	}
